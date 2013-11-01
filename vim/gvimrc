@@ -1,0 +1,24 @@
+set number           " show line numbers
+
+" set my favorite color:
+
+set guioptions-=m    " remove menu bar
+set guioptions-=T    " remove tool bar
+set guioptions-=r    " remove right scroll
+set guioptions-=R    " remove right scroll
+set guioptions-=l    " remove left scroll
+set guioptions-=L    " remove left scroll
+
+
+"Easy copy paste to xTermminal buffer
+vmap <C-S-C> "+y 
+nmap <C-S-V> "+gP
+imap <C-S-V> <ESC>"+gPa
+vmap <C-S-X> "+x
+
+" Quick window nagivation
+nmap <C-left> <C-w>h
+nmap <C-down> <C-w>j
+nmap <C-up> <C-w>k
+nmap <C-right> <C-w>l
+

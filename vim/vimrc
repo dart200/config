@@ -1,0 +1,71 @@
+syntax enable
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Sets how many lines of history VIM has to remember
+set history=700
+
+" Enable filetype plugins
+filetype plugin on
+filetype indent on
+
+" Set to auto read when a file is changed from the outside
+set autoread
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => VIM user interface
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Always show current position
+set ruler
+
+" Configure backspace so it acts as it should act
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
+set hlsearch "Highlight search results
+set ignorecase "Ignore case when searching
+set smartcase " When searching try to be smart about cases
+set showmatch " Show matching brackets when text indicator is over them
+set mat=2 " How many tenths of a second to blink when matching brackets
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Colors and Fonts
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Enable syntax highlighting
+
+syntax enable
+color molokai  
+set background=dark
+
+set encoding=utf8 " Set utf8 as standard encoding and en_US as the standard language
+set ffs=unix,dos,mac " Use Unix as the standard file type
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Text, tab and indent related
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set expandtab        " expand tabs
+set smarttab          
+set shiftwidth=3
+set tabstop=3
+
+source ~/scripts/vim/vimrc
+source ~/scripts/vim/tags.vim
+source ~/scripts/vim/git.vim 
+
+" special kernel style settings
+au FileType c,cpp set noexpandtab
+au FileType c,cpp set shiftwidth=8
+au FileType c,cpp set tabstop=8
+
+" special styling for mdwn
+au FileType markdown set noexpandtab
+au FileType markdown set shiftwidth=8
+au FileType markdown set tabstop=8
+
+"turn off folding for git commit
+au FileType git* set nofoldenable
+
+"Faster replace
+nmap r <C-r>
