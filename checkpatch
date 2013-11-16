@@ -1,0 +1,34 @@
+#!/bin/bash
+RED="\033[1;31m"
+YELLOW="\033[1;33m"
+BLUE="\033[1;34m"
+GREEN="\033[1;32m"
+NC="\033[0m"
+
+set -e
+PATCH=`git format-patch -1`
+echo "CHECKING PATCH: $PATCH"
+set +e
+while read line; do
+   error="ERROR"
+   errorline=$RED$error$NC
+   line=${line/ERROR/$errorline}
+
+   warning="WARNING"
+   warningline=$YELLOW$warning$NC
+   line=${line/WARNING/$warningline}
+
+   tabplus="\t+"
+   line=${line/#+/$tabplus}
+
+   number=`echo $line | grep -oP "[0-9]+(?=:$)"`
+   color_number=$BLUE$number$NC
+   line=${line/$number/$color_number}
+
+   file=`echo $line | grep -oP "\w+\.\w+(?=:*:)"`
+   color_file=$GREEN$file$NC
+   line=${line/$file/$color_file}
+
+   echo -e $line
+done < <(./scripts/checkpatch.pl $PATCH)
+rm $PATCH
